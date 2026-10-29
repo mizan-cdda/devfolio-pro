@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@import './themes.css';
+
+@custom-variant dark (&:where([data-mode='dark'], [data-mode='dark'] *));
+
+/* Map theme tokens to Tailwind utilities: bg-bg, text-ink, border-line, font-display and so on. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-focus: var(--focus);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+
+  --font-display: var(--font-display-family);
+  --font-sans: var(--font-body-family);
+  --font-meta: var(--font-meta-family);
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --radius-card: var(--card-radius);
+  --radius-control: var(--control-radius);
+}
+
+@theme {
+  --breakpoint-xs: 30rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 4rem;
+    background-color: var(--bg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv11';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Display type follows the active theme's personality. */
+  .type-display {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
+    line-height: var(--display-leading);
+    font-variation-settings: var(--display-variation);
+  }
+
+  .type-emphasis {
+    font-style: var(--emphasis-style);
+    color: var(--accent-text);
+  }
+
+  /* Small labels: section numbers, dates, metadata. */
+  .type-meta {
+    font-family: var(--font-meta);
+    font-size: var(--meta-size);
+    letter-spacing: var(--meta-tracking);
+    text-transform: var(--meta-transform);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .rule {
+    border-color: var(--line);
+    border-top-width: var(--rule-width);
+  }
+
+  .link-underline {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color 150ms ease;
+  }
+
+  .link-underline:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+}
+
+/*
+ * Scroll reveal. Content is visible by default; it only starts hidden once JavaScript has loaded
+ * (the `js` class) and motion is allowed, so nothing disappears for no-JS or reduced-motion visitors.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    translate: 0 14px;
+  }
+
+  [data-reveal] {
+    transition:
+      opacity 700ms var(--ease-out-soft),
+      translate 700ms var(--ease-out-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  [data-print-hidden] {
+    display: none !important;
+  }
+}

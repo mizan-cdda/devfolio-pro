@@ -1,0 +1,170 @@
+/*
+ * DevFolio Pro themes.
+ *
+ * Each theme sets the same design tokens for light and dark mode. Components only use the tokens
+ * (through Tailwind utilities such as `bg-surface` or `text-muted`), so adding a fourth theme means
+ * copying one block below and changing values. See docs/themes.md.
+ *
+ * Text tokens meet WCAG AA contrast (4.5:1) against `--bg` and `--surface`.
+ * `--accent` is for large marks and fills; use `--accent-text` for small text in the accent colour.
+ */
+
+/* -------------------------------------------------------------------------- */
+/*  Editorial: serif display, warm paper, oxblood accent                      */
+/* -------------------------------------------------------------------------- */
+:root,
+[data-theme='editorial'] {
+  --font-display-family: var(--font-fraunces);
+  --font-body-family: var(--font-inter);
+  --font-meta-family: var(--font-inter);
+  --display-weight: 420;
+  --display-tracking: -0.025em;
+  --display-leading: 1.02;
+  --display-style: normal;
+  --display-variation: 'opsz' 144, 'SOFT' 30;
+  --emphasis-style: italic;
+  --meta-transform: uppercase;
+  --meta-tracking: 0.12em;
+  --meta-size: 0.72rem;
+  --card-radius: 4px;
+  --control-radius: 999px;
+  --rule-width: 1px;
+
+  --bg: #f5f1e8;
+  --surface: #fbf8f1;
+  --surface-2: #ede7db;
+  --ink: #1d1a16;
+  --muted: #5d574e;
+  --line: #ddd5c6;
+  --line-strong: #b9ae9b;
+  --accent: #8e2f1f;
+  --accent-text: #8e2f1f;
+  --accent-ink: #fbf8f1;
+  --accent-soft: #f1e1d8;
+  --focus: #1f5fbf;
+  --success: #2c6a46;
+  --danger: #a1301f;
+}
+
+[data-theme='editorial'][data-mode='dark'] {
+  --bg: #14120f;
+  --surface: #1c1915;
+  --surface-2: #26221c;
+  --ink: #efe8dc;
+  --muted: #a99f90;
+  --line: #322d26;
+  --line-strong: #4d463c;
+  --accent: #e0896d;
+  --accent-text: #eb9d84;
+  --accent-ink: #1a0f0b;
+  --accent-soft: #3a231b;
+  --focus: #8ab4ff;
+  --success: #7dc49b;
+  --danger: #f08e7e;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Studio: tight grotesk, strict grid, vermilion signal                      */
+/* -------------------------------------------------------------------------- */
+[data-theme='studio'] {
+  --font-display-family: var(--font-inter-tight);
+  --font-body-family: var(--font-inter);
+  --font-meta-family: var(--font-inter-tight);
+  --display-weight: 680;
+  --display-tracking: -0.035em;
+  --display-leading: 0.95;
+  --display-style: normal;
+  --display-variation: normal;
+  --emphasis-style: normal;
+  --meta-transform: uppercase;
+  --meta-tracking: 0.06em;
+  --meta-size: 0.75rem;
+  --card-radius: 0px;
+  --control-radius: 0px;
+  --rule-width: 2px;
+
+  --bg: #ffffff;
+  --surface: #f3f3f1;
+  --surface-2: #e8e8e5;
+  --ink: #0a0a0a;
+  --muted: #545452;
+  --line: #dededa;
+  --line-strong: #0a0a0a;
+  --accent: #cc3814;
+  --accent-text: #b8300f;
+  --accent-ink: #ffffff;
+  --accent-soft: #fde7e1;
+  --focus: #1f5fbf;
+  --success: #1d6b3c;
+  --danger: #b8300f;
+}
+
+[data-theme='studio'][data-mode='dark'] {
+  --bg: #0b0b0b;
+  --surface: #151515;
+  --surface-2: #1f1f1f;
+  --ink: #f4f4f2;
+  --muted: #a6a6a2;
+  --line: #2a2a2a;
+  --line-strong: #f4f4f2;
+  --accent: #ff5a36;
+  --accent-text: #ff7a5c;
+  --accent-ink: #0b0b0b;
+  --accent-soft: #3a1a12;
+  --focus: #8ab4ff;
+  --success: #6fd197;
+  --danger: #ff8a70;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Ledger: Plex and mono, cool neutrals, deep green                           */
+/* -------------------------------------------------------------------------- */
+[data-theme='ledger'] {
+  --font-display-family: var(--font-plex-sans);
+  --font-body-family: var(--font-plex-sans);
+  --font-meta-family: var(--font-jetbrains-mono);
+  --display-weight: 520;
+  --display-tracking: -0.03em;
+  --display-leading: 1.04;
+  --display-style: normal;
+  --display-variation: normal;
+  --emphasis-style: normal;
+  --meta-transform: none;
+  --meta-tracking: 0;
+  --meta-size: 0.75rem;
+  --card-radius: 10px;
+  --control-radius: 8px;
+  --rule-width: 1px;
+
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --surface-2: #e8edeb;
+  --ink: #111816;
+  --muted: #52605b;
+  --line: #d6dedb;
+  --line-strong: #a9b7b2;
+  --accent: #1d6c59;
+  --accent-text: #1d6c59;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefe8;
+  --focus: #1f5fbf;
+  --success: #1d6c59;
+  --danger: #a3332a;
+}
+
+[data-theme='ledger'][data-mode='dark'] {
+  --bg: #0c1110;
+  --surface: #121917;
+  --surface-2: #1a2320;
+  --ink: #e2eae7;
+  --muted: #92a39d;
+  --line: #22302b;
+  --line-strong: #3b4d47;
+  --accent: #5bc6a4;
+  --accent-text: #6fd3b3;
+  --accent-ink: #07130f;
+  --accent-soft: #15322a;
+  --focus: #8ab4ff;
+  --success: #6fd3b3;
+  --danger: #f2938a;
+}

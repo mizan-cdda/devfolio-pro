@@ -1,0 +1,11 @@
+# Normalise line endings
+* text=auto eol=lf
+*.woff2 binary
+*.woff binary
+*.webp binary
+*.png binary
+*.pdf binary
+
+# Seller-only files, excluded from `git archive` (used by npm run package:release)
+marketing/ export-ignore
+scripts/package-release.mjs export-ignore
